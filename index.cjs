@@ -1,9 +1,11 @@
+// index.cjs
+
 const { Client, GatewayIntentBits, Events, EmbedBuilder } = require('discord.js');
 const { appendLog } = require('./googleSheets.cjs');
 require('dotenv').config();
 const fetch = require('node-fetch');
-
 const express = require('express');
+
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -63,6 +65,12 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once(Events.ClientReady, () => {
   console.log(`✅ Bot起動完了: ${client.user.tag}`);
+
+  // プレゼンス設定（例）
+  client.user.setPresence({
+    activities: [{ name: '指名手配を登録中', type: 3 }], // type 3 = WATCHING (視聴中)
+    status: 'online'
+  });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
