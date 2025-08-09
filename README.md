@@ -87,10 +87,11 @@ PCA Database Discord Bot は、複数の Discord サーバーで利用可能な�
 
 ## ロゴ画像について
 
-![PCA Database Discord Bot Logo](https://i.imgur.com/a8CbHqL.png)
+![PCA Database Discord Bot ロゴ](https://github.com/tomeitoooooooooooooooooooooooooo/PCA-Database/blob/main/%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89%201.png?raw=true)
 
-画像は Imgur にアップロードされています。  
-長期利用を考慮する場合は、GitHubリポジトリに直接アップロードしURLを更新してください。
+画像はGitHubリポジトリにアップロードされています。  
+長期利用を考慮する場合は、こちらのURLを利用してください。
+
 
 ---
 
@@ -107,3 +108,4 @@ MIT License
 ---
 
 ご質問や不具合報告は GitHub Issues または Discord サーバーまでお願いします。
+
