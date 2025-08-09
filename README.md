@@ -8,31 +8,34 @@
 
 PCA Database Discord Bot は、複数の Discord サーバーで利用可能な警察向けボットです。  
 サーバーごとに任意の Google スプレッドシートを設定し、`/wanted` コマンドで指名手配情報を記録します。  
-記録先はスプレッドシートIDとシート名（デフォルトは `wanted`）を自由に変更できます。
+記録先はスプレッドシートIDとシート名（デフォルトは `wanted`）を自由に変更可能です。
 
 ---
 
 ## 主な機能
 
 - **/wanted**  
-  指名手配情報を登録。罪状に応じて罰金額を自動計算し、指定スプレッドシートに記録。
+  指名手配情報を登録。罪状に応じて罰金額を自動計算し、指定スプレッドシートに記録します。
 
 - **/set_spreadsheet**  
-  このサーバーで使用する Google スプレッドシートIDとシート名を設定。
+  このサーバーで使用する Google スプレッドシートIDとシート名を設定します。
 
 - **/setup_help**  
-  Google スプレッドシートのセットアップ方法を表示。
+  Google スプレッドシートのセットアップ方法を表示します。
 
 - **/help_pd**  
-  利用可能なコマンド一覧を表示。
+  利用可能なコマンド一覧を表示します。
+
+- **/read_readmefile**  
+  ボットの README ファイルのリンクを表示します。
 
 ---
 
 ## 使い方
 
 1. Google スプレッドシートを作成してください。  
-2. Bot のサービスアカウント（JSONの `client_email`）に「編集者」権限を付与してください。  
-3. Discord サーバーで `/set_spreadsheet` コマンドを使い、スプレッドシートIDとシート名を設定。  
+2. Bot のサービスアカウント（JSON の `client_email`）に「編集者」権限を付与してください。  
+3. Discord サーバー内で `/set_spreadsheet` コマンドを使い、スプレッドシートIDとシート名を設定してください。  
 4. `/wanted` コマンドで指名手配情報を登録すると、設定したスプレッドシートに自動で記録されます。
 
 ---
@@ -42,7 +45,7 @@ PCA Database Discord Bot は、複数の Discord サーバーで利用可能な�
 - Node.js  
 - Discord.js (v14)  
 - Google Sheets API (`google-spreadsheet`パッケージ)  
-- Supabase (PostgreSQL ベースの設定管理用DB)  
+- Supabase (設定管理用 PostgreSQL データベース)  
 - Koyeb (ホスティング)  
 
 ---
@@ -52,7 +55,7 @@ PCA Database Discord Bot は、複数の Discord サーバーで利用可能な�
 | カラム名        | 型           | 説明                             |
 |-----------------|--------------|---------------------------------|
 | id              | UUID         | プライマリキー、自動生成        |
-| guild_id        | TEXT         | Discord サーバーID               |
+| guild_id        | TEXT         | Discord サーバーID              |
 | spreadsheet_id  | TEXT         | Google スプレッドシートID       |
 | sheet_name      | TEXT         | 使用するシート名 (例: "wanted") |
 | created_at      | TIMESTAMP    | レコード作成日時                |
@@ -62,10 +65,15 @@ PCA Database Discord Bot は、複数の Discord サーバーで利用可能な�
 ## セットアップ手順
 
 1. リポジトリをクローン  
-2. `.env` ファイルを作成し以下を記述  
+2. `.env` ファイルを作成し、以下の環境変数を設定  
+   - `DISCORD_TOKEN`  
+   - `CLIENT_ID`  
+   - `SUPABASE_URL`  
+   - `SUPABASE_KEY`  
+   - `SPREADSHEET_KEYFILE` (GoogleサービスアカウントJSONファイル名)  
 3. 依存パッケージをインストール  
-4. スラッシュコマンドをデプロイ  
-5. ボットを起動  
+   ```bash
+   npm install
 
 ---
 
@@ -79,10 +87,10 @@ PCA Database Discord Bot は、複数の Discord サーバーで利用可能な�
 
 ## ロゴ画像について
 
-![PCA Database Discord Bot ロゴ](https://github.com/tomeitoooooooooooooooooooooooooo/PCA-Database/blob/main/%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89%201.png?raw=true)
+![PCA Database Discord Bot Logo](https://i.imgur.com/a8CbHqL.png)
 
-画像はGitHubリポジトリにアップロードされています。  
-長期利用を考慮する場合は、こちらのURLを利用してください。
+画像は Imgur にアップロードされています。  
+長期利用を考慮する場合は、GitHubリポジトリに直接アップロードしURLを更新してください。
 
 ---
 
@@ -99,4 +107,3 @@ MIT License
 ---
 
 ご質問や不具合報告は GitHub Issues または Discord サーバーまでお願いします。
-
