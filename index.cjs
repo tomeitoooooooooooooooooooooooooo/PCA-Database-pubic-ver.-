@@ -170,7 +170,7 @@ client.on(Events.InteractionCreate, async interaction => {
     } else if (commandName === 'read_readmefile') {
       const embed = new EmbedBuilder()
         .setTitle('PCA Database Bot README')
-        .setDescription('[READMEを見る](https://github.com/tomeitoooooooooooooooooooooooooo/PCA-Database/blob/main/README.md)')
+        .setDescription('[READMEを見る](https://github.com/tomeitoooooooooooooooooooooooooo/PCA-Database-pubic-ver.-/blob/main/README.md)')
         .setColor(0xFF6347);
 
       await interaction.reply({ embeds: [embed], ephemeral: true });
@@ -193,3 +193,4 @@ app.get('/', (req, res) => res.send('Bot is running!'));
 app.listen(PORT, () => console.log(`✅ Health check server running on port ${PORT}`));
 
 client.login(TOKEN);
+
