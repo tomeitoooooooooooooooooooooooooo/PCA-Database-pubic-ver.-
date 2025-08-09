@@ -9,7 +9,7 @@ async function getDoc(spreadsheetId) {
   const creds = JSON.parse(fs.readFileSync(KEYFILEPATH, 'utf8'));
   const doc = new GoogleSpreadsheet(spreadsheetId);
 
-  await doc.useServiceAccountAuth({
+  doc.useServiceAccountAuth({
     client_email: creds.client_email,
     private_key: creds.private_key.replace(/\\n/g, '\n'),
   });
@@ -23,9 +23,19 @@ async function appendLog(spreadsheetId, sheetName, log) {
     const doc = await getDoc(spreadsheetId);
     let sheet = doc.sheetsByTitle[sheetName];
     if (!sheet) {
-      sheet = await doc.addSheet({ title: sheetName, headerValues: [
-        'timestamp','name','citizenId','crimes','licensePlate','fineAmount','deadline','registeredBy'
-      ]});
+      sheet = await doc.addSheet({
+        title: sheetName,
+        headerValues: [
+          'timestamp',
+          'name',
+          'citizenId',
+          'crimes',
+          'licensePlate',
+          'fineAmount',
+          'deadline',
+          'registeredBy',
+        ],
+      });
     }
 
     const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
